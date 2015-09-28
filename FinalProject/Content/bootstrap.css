@@ -1587,6 +1587,7 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+    margin-top: 70px;
     width: 312px;
 }
 @media (min-width: 768px) {
@@ -4313,7 +4314,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-fixed-top {
   top: 0;
-  border-width: 0 0 1px;
+  border-width: 0 0 4px;
+    height: 12%;
 }
 .navbar-fixed-bottom {
   bottom: 0;
@@ -4638,8 +4640,8 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 .navbar-inverse {
-  background-color: #222;
-  border-color: #080808;
+  background-color: gray;
+  border-color: cornflowerblue;
 }
 .navbar-inverse .navbar-brand {
   color: #9d9d9d;

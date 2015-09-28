@@ -8,8 +8,15 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
-
+<body dir="rtl">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="site-header row">
+            <div class="col-md-11" style="display: flex">
+                    <h1 class="glyphicon glyphicon-film header-icon" aria-hidden="true"></h1>
+                <h1 class="h1-header">תקצירים</h1>
+            </div>
+        </div>
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />

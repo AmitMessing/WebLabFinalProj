@@ -10,6 +10,22 @@
     padding-right: 15px;
 }
 
+.header-icon {
+    margin-left: 8px;
+    margin-top: 1px;
+    font-size: 60px;
+}
+
+.site-header h1 {
+    background: -webkit-linear-gradient(top, #659CEF, #FFFFFF);
+	background: linear-gradient( #659CEF, #FFFFFF);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    font-size: 3em;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
