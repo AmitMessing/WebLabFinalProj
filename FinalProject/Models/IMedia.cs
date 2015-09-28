@@ -11,36 +11,28 @@ namespace FinalProject.Models
         Guid Id { get; set; }
 
         string HebrewTitle { get; set; }
+
         string EnglishTitle { get; set; }
 
-        [DisplayName("ז'אנר")]
         Category Category { get; set; }
 
-        [DisplayName("תקציר")]
         string Summery { get; set; }
 
-        /// <summary>
-        /// From imdb
-        /// </summary>
-        [DisplayName("דירוג")]
-        double Rank { get; set; }
+        /// <summary>From imdb</summary>
+        double Rank { get; set; }     
 
-        [DisplayName("תאריך יציאה לעולם")]
         DateTime ReleaseDate { get; set; }
 
-        /// <summary>
-        /// In minutes
-        /// </summary>
+        /// <summary> In minutes </summary>
         int Length { get; set; }
 
-        [DisplayName("במאי")]
         List<string> Directors { get; set; }
 
-        [DisplayName("מפיק")]
         List<string> Producers { get; set; }
 
-        [DisplayName("שחקנים")]
         List<string> Actors { get; set; }
+
+        string Image { get; set; }
     }
 
 
