@@ -18,7 +18,6 @@ namespace FinalProject.Controllers
         // GET: User
         public ActionResult Index()
         {
-            var users = ctx.Users.ToList();
             return View();
         }
     }

@@ -1,4 +1,5 @@
-﻿@model FinalProject.Models.User
+﻿@using Newtonsoft.Json
+@model FinalProject.Models.User
 
 @{
     ViewBag.Title = "Register";
@@ -23,40 +24,40 @@
         <div class="form-group">
             @Html.DisplayNameFor(model => model.FirstName)
             <div class="col-md-9">
-                @Html.EditorFor(model => model.FirstName, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.FirstName, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                @Html.ValidationMessageFor(model => model.FirstName)
             </div>
         </div>
 
         <div class="form-group">
             @Html.DisplayNameFor(model => model.LastName)
             <div class="col-md-9">
-                @Html.EditorFor(model => model.LastName, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.LastName, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                @Html.ValidationMessageFor(model => model.LastName)
             </div>
         </div>
 
         <div class="form-group">
             @Html.DisplayNameFor(model => model.Password)
             <div class="col-md-9">
-                @Html.EditorFor(model => model.Password, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.Password, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                @Html.ValidationMessageFor(model => model.Password)
             </div>
         </div>
 
         <div class="form-group">
             @Html.DisplayNameFor(model => model.UserName)
             <div class="col-md-9">
-                @Html.EditorFor(model => model.UserName, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.UserName, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", required="true"} })
+                @Html.ValidationMessageFor(model => model.UserName)
             </div>
         </div>
 
         <div class="form-group">
             @Html.DisplayNameFor(model => model.Email)
             <div class="col-md-9">
-                @Html.EditorFor(model => model.Email, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                @Html.ValidationMessageFor(model => model.Email)
             </div>
         </div>
 

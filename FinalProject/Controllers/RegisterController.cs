@@ -32,8 +32,7 @@ namespace FinalProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(User user)
         {
-            var duplicateUsers = ctx.Users.Select(x => x.UserName == user.UserName).ToList();
-            if (duplicateUsers.Any())
+            if (ctx.Users.Any(x => x.UserName == user.UserName))
             {
                 return Content("שם משתמש כבר קיים");
             }
