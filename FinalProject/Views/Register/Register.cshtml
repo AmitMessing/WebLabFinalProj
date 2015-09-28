@@ -1,0 +1,81 @@
+﻿@model FinalProject.Models.User
+
+@{
+    ViewBag.Title = "Register";
+}
+
+
+<html lang="he">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="../../Content/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../Content/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="../../Content/Site.css">
+    <title>register</title>
+    
+</head>
+<body dir="rtl">
+    <h2>משתמש חדש</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.FirstName)
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.FirstName, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.FirstName, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.LastName)
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.LastName, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.LastName, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Password)
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Password, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Password, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.UserName)
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.UserName, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.UserName, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Email)
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.Email, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-10">
+                <input type="submit" value="הרשם" class="btn btn-default"/>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-offset-1 col-md-10">
+        @Html.ActionLink("חזור למסך התחברות", "ReturnToLoginView")
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+</body>
+</html>
