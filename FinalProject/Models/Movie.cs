@@ -1,6 +1,8 @@
-﻿using System;
+﻿using FinalProject.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,41 +10,57 @@ namespace FinalProject.Models
 {
     public class Movie : IMedia
     {
+        public Movie()
+        {
+
+        }
+
+        public Movie(MovieViewModel movieViewModel)
+        {
+            Id = movieViewModel.Id;
+            HebrewTitle = movieViewModel.HebrewTitle;
+            EnglishTitle = movieViewModel.EnglishTitle;
+            Category = movieViewModel.Category;
+            Summery = movieViewModel.Summery;
+            Rank = movieViewModel.Rank;
+            ReleaseDate = movieViewModel.ReleaseDate;
+            Length = movieViewModel.Length;
+            Directors = movieViewModel.Directors;
+            Producers = movieViewModel.Producers;
+            Actors = movieViewModel.Actors;
+
+            if (movieViewModel.Image.ContentLength > 0)
+            {
+                byte[] fileBytes = new byte[movieViewModel.Image.InputStream.Length];
+                int byteCount = movieViewModel.Image.InputStream.Read(fileBytes, 0, (int)movieViewModel.Image.InputStream.Length);
+                Image = Convert.ToBase64String(fileBytes);
+            }
+        }
+
         public Guid Id { get; set; }
 
-        [DisplayName("שם הסרט בעברית")]
         public string HebrewTitle { get; set; }
 
-        [DisplayName("שם הסרט באנגלית")]
         public string EnglishTitle { get; set; }
 
-        [DisplayName("ז'אנר")]
         public Category Category { get; set; }
 
-        [DisplayName("תקציר")]
         public string Summery { get; set; }
 
-        /// <summary>From imdb</summary>
-        [DisplayName("דירוג")]
         public double Rank { get; set; }
 
-        [DisplayName("תאריך יציאה לעולם")]
+        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
 
-        /// <summary> In minutes </summary>
-        [DisplayName("אורך הסרט")]
         public int Length { get; set; }
 
-        [DisplayName("במאי")]
-        public List<string> Directors { get; set; }
+        public string Directors { get; set; }
 
-        [DisplayName("מפיק")]
-        public List<string> Producers { get; set; }
+        public string Producers { get; set; }
 
-        [DisplayName("שחקנים")]
-        public List<string> Actors { get; set; }
+        public string Actors { get; set; }
 
-        [DisplayName("תמונה")]
         public string Image { get; set; }
     }
 

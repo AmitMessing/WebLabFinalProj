@@ -1,15 +1,12 @@
-﻿@model FinalProject.Models.Movie
+﻿@model FinalProject.ViewModels.MovieViewModel
 
 @{
     ViewBag.Title = "AddMovie";
 }
 
-
-<html lang="he">
-
 <body dir="rtl">
-    <h2>הוספת סרט</h2>
-    @using (Html.BeginForm())
+    <br /><br />
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "javascript:return validateImageType()" }))
     {
         @Html.AntiForgeryToken()
 
@@ -42,7 +39,7 @@
                 <div class="form-group">
                     @Html.DisplayNameFor(model => model.Category)
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EnumDropDownListFor(model => model.Category, htmlAttributes: new { @class = "form-control" } )
                         @Html.ValidationMessageFor(model => model.Category)
                     </div>
                 </div>
@@ -74,7 +71,7 @@
                 <div class="form-group">
                     @Html.DisplayNameFor(model => model.Length)
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.Length, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Length, new { htmlAttributes = new { @class = "form-control", min = 0, max = 600 } })
                         @Html.ValidationMessageFor(model => model.Length)
                     </div>
                 </div>
@@ -90,21 +87,36 @@
                 <div class="form-group">
                     @Html.DisplayNameFor(model => model.Image)
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Image)
+                        <input type="file" name="Image" id="Image" accept="Image/png" />
                     </div>
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-md-8">
-                    <input type="submit" value="הוסף" class="btn btn-default" />
+                    <input type="submit" value="הוסף" class="btn btn-info" />
                 </div>
             </div>
         </div>
     }
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
+
+        <script language="javascript" type="text/javascript">
+        function validateImageType() {
+            $file = $("#Image");
+            var $filePath = $.trim($file.val());
+
+            var $ext = $filePath.split(".").pop().toLowerCase();
+            if ($ext != "png" && $filePath != "") {
+                alert("Only png image files are accepted, please browse a image file");
+                return false;
+            }
+
+            return true;
+        }
+        </script>
+
     }
 </body>
 </html>

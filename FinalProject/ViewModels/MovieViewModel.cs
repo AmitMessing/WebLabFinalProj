@@ -1,14 +1,34 @@
-﻿using System;
+﻿using FinalProject.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace FinalProject.Models
+namespace FinalProject.ViewModels
 {
-    public class Series : IMedia
+    public class MovieViewModel
     {
+        public MovieViewModel()
+        {
+
+        }
+
+        public MovieViewModel(Movie movie){
+            Id = movie.Id;
+            HebrewTitle = movie.HebrewTitle;
+            EnglishTitle = movie.EnglishTitle;
+            Category = movie.Category;
+            Summery = movie.Summery;
+            Rank = movie.Rank;
+            ReleaseDate = movie.ReleaseDate;
+            Length = movie.Length;
+            Directors = movie.Directors;
+            Producers = movie.Producers;
+            Actors = movie.Actors;
+        }
+
         public Guid Id { get; set; }
 
         [DisplayName("שם הסרט בעברית")]
@@ -46,6 +66,6 @@ namespace FinalProject.Models
         public string Actors { get; set; }
 
         [DisplayName("תמונה")]
-        public string Image { get; set; }
+        public HttpPostedFileBase Image { get; set; }
     }
 }

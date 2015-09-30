@@ -1,8 +1,5 @@
 ﻿@model IEnumerable<FinalProject.Models.IMedia>
 
-<!DOCTYPE html>
-
-<html lang="he">
 <body dir="rtl">
     <div class="site-content">
         <div class="row">
@@ -12,9 +9,9 @@
                     if (media is FinalProject.Models.Movie)
                     {
                         <div class="row">
-                            <div class="col-md-4"><img src="data:image/png;base64,@Html.DisplayFor(item => media.Image) " /></div>
+                            <div class="col-md-3">@Html.DisplayFor(item => media.ReleaseDate.Year)</div>
                             <div class="col-md-5">@Html.DisplayFor(item => media.HebrewTitle)</div>
-                            <div class="col-md-3">@Html.DisplayFor(item => media.ReleaseDate)</div>
+                            <div class="col-md-4"><img style="width:100%" src="data:image/png;base64,@Html.DisplayFor(item => media.Image)" /></div>
                         </div>
                     }
                 }
@@ -25,9 +22,9 @@
                     if (media is FinalProject.Models.Series)
                     {
                         <div class="row">
-                            <div class="col-md-4"><img src="data:image/png;base64,@Html.DisplayFor(item => media.Image)" /></div>
+                            <div class="col-md-3">@Html.DisplayFor(item => media.ReleaseDate.Year)</div>
                             <div class="col-md-5">@Html.DisplayFor(item => media.HebrewTitle)</div>
-                            <div class="col-md-3">@Html.DisplayFor(item => media.ReleaseDate)</div>
+                            <div class="col-md-4"><img src="data:image/png;base64,@Html.DisplayFor(item => media.Image)" /></div>
                         </div>
                     }
                 }
@@ -35,5 +32,3 @@
         </div>
     </div>
 </body>
-
-</html>

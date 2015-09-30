@@ -54,3 +54,7 @@ textarea {
     margin-right: auto;
     margin-left: auto;
 }
+
+.site-container {
+    width: 75%;
+}

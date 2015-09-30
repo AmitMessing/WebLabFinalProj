@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -26,11 +27,11 @@ namespace FinalProject.Models
         /// <summary> In minutes </summary>
         int Length { get; set; }
 
-        List<string> Directors { get; set; }
+        string Directors { get; set; }
 
-        List<string> Producers { get; set; }
+        string Producers { get; set; }
 
-        List<string> Actors { get; set; }
+        string Actors { get; set; }
 
         string Image { get; set; }
     }
@@ -38,15 +39,25 @@ namespace FinalProject.Models
 
     public enum Category
     {
+        [Display(Name = "קומדיה")]
         Comedy,
+        [Display(Name = "דרמה")]
         Drama,
+        [Display(Name = "פעולה")]
         Action,
+        [Display(Name = "רומנטיקה")]
         Romance,
+        [Display(Name = "אימה")]
         Horror,
+        [Display(Name = "אנימציה")]
         Animation,
+        [Display(Name = "פשע")]
         Crime,
+        [Display(Name = "מתח")]
         Thriller,
+        [Display(Name = "פנטזיה")]
         Fantasy,
+        [Display(Name = "מדע בדיוני")]
         SciFi,
     }
 }
