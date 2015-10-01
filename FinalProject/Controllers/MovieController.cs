@@ -18,6 +18,11 @@ namespace FinalProject.Controllers
             ctx = new SiteContext();
         }
 
+        public ActionResult AllMovies()
+        {
+            return View(ctx.Movies.ToList());
+        }
+
         // GET: Movie
         public ActionResult AddMovie()
         {
@@ -32,6 +37,16 @@ namespace FinalProject.Controllers
             ctx.Movies.Add(new Movie(movieViewModel));
             ctx.SaveChanges();
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult MovieDetails(string id)
+        {
+            var movie = ctx.Movies.Find(Guid.Parse(id));
+            if (movie != null)
+            {
+                return View(movie);
+            }
         }
     }
 }

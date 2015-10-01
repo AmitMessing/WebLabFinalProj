@@ -4,29 +4,40 @@
     ViewBag.Title = "SignIn";
 }
 
-<!DOCTYPE html>
 
-<html lang="he">
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="../../Content/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../Content/bootstrap-theme.css">
-    <link rel="stylesheet" type="text/css" href="../../Content/Site.css">
-    <title>title</title>
-</head>
 <body dir="rtl">
 <div class="container">
-    <form class="form-signin">
-        <h2>אנא התחבר</h2>
-        <label for="inputUserName" class="sr-only">שם משתמש</label>
-        <input type="text" id="inputUserName" class="form-input form-control" placeholder="שם משתמש" required="" autofocus="">
-        <label for="inputPassword" class="sr-only">סיסמא</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="סיסמא" required="">
-        <input class="login-btn btn btn-lg btn-primary btn-block" type="submit" value="התחבר"/>
-    </form>
+    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            <fieldset>
+                <legend>התחברות</legend>
+                <div class="editor-label">
+                    @Html.LabelFor(u => u.UserName)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(u => u.UserName, htmlAttributes: new {@class = "form-control"})
+                    @Html.ValidationMessageFor(u => u.UserName)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(u => u.Password)
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(u => u.Password, htmlAttributes: new {@class = "form-control"})
+                    @Html.ValidationMessageFor(u => u.Password)
+                </div>
+                <div class="editor-label">
+                    @Html.CheckBoxFor(u => u.RememberMe)
+                    @Html.LabelFor(u => u.RememberMe)
+                </div>
+                <input type="submit" value="התחבר" class="btn site-btn" />
+            </fieldset>
+        </div>
+    }
     <div>
         @Html.ActionLink("אין לך משתמש ? הירשם עכשיו", "Register")
     </div>
 </div>
 </body>
-</html>

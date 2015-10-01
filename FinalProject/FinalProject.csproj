@@ -187,6 +187,9 @@
     <None Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Movie\AddMovie.cshtml" />
+    <Content Include="Views\Movie\AllMovies.cshtml" />
+    <Content Include="Views\User\GetUser.cshtml" />
+    <Content Include="Views\Movie\MovieDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html style="height: 100%">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +8,44 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body dir="rtl">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="site-header row">
-            <div class="col-md-11" style="display: flex">
-                    <h1 class="glyphicon glyphicon-film header-icon" aria-hidden="true"></h1>
-                <h1 class="h1-header">תקצירים</h1>
-            </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="site-header row">
+        <div class="col-md-2 name-header">
+            @if (Session["LoggedinUserName"] != null)
+            {
+                <b> שלום @Session["LoggedinUserName"].ToString()</b>
+                <div>
+                    <label class="header-link">@Html.ActionLink("התנתק", "Logout", "Login")</label>
+                </div>
+            }
+            else
+            {
+                <b> שלום אורח</b>
+                <div>
+                    <label class="header-link">@Html.ActionLink("התחבר", "Index", "Login")</label>
+                    <label class="header-link"> @Html.ActionLink("הרשם", "Register", "Login")</label>
+                </div>
+            }
+        </div>
+        <div class="col-md-9" style="display: flex">
+            <h1 class="glyphicon glyphicon-film header-icon" aria-hidden="true"></h1>
+            <h1 class="h1-header">תקצירים</h1>
         </div>
     </div>
+</div>
+<div class="site-menu row">
+    <label class="site-menu-items"> @Html.ActionLink("דף הבית", "Index", "Home")</label>
+    <label class="site-menu-items"> @Html.ActionLink("סרטים", "AllMovies", "Movie")</label>
+    <label class="site-menu-items"> @Html.ActionLink("סדרות", "AllMovies", "Movie")</label>
+    @if (Session["LoggedinUserName"] != null)
+    {
+        <label class="site-menu-items"> @Html.ActionLink("עריכת פרטי משתמש", "GetUser", "User")</label>
+    }
+    @if (Session["LoggedinUserType"] != null && Session["LoggedinUserType"].ToString() == "Manager")
+    {
+        <label class="site-menu-items"> @Html.ActionLink("ניהול", "AddMovie", "Movie")</label>
+    }
+</div>
     <div class="container body-content site-container">
         @RenderBody()
         <hr />
@@ -26,4 +56,5 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
+
 </html>
