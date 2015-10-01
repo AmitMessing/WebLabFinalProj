@@ -25,5 +25,10 @@ namespace FinalProject.Controllers
 
             return View(mediaList);
         }
+
+        public ActionResult GetMovie(Guid id = default(Guid))
+        {
+            return RedirectToAction("MovieDetails", "Movie", new {id = id});
+        }
     }
 }

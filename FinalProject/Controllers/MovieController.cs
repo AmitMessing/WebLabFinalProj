@@ -39,14 +39,14 @@ namespace FinalProject.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
-        public ActionResult MovieDetails(string id)
+        public ActionResult MovieDetails(Guid id)
         {
-            var movie = ctx.Movies.Find(Guid.Parse(id));
+            var movie = ctx.Movies.Find(id);
             if (movie != null)
             {
                 return View(movie);
             }
+            return RedirectToAction("Index","Home");
         }
     }
 }
