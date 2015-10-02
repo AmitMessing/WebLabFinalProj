@@ -1,11 +1,10 @@
 ﻿@model FinalProject.ViewModels.MediaViewModel
 
 @{
-    ViewBag.Title = "AddMovie";
+    ViewBag.Title = "AddMedia";
 }
 
 <body dir="rtl">
-    <br /><br />
     @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "javascript:return validateImageType()" }))
     {
         @Html.AntiForgeryToken()
@@ -13,9 +12,16 @@
         <div class="form-horizontal">
             <div class="row">
                 <div class="form-group">
+                    @Html.DisplayNameFor(model => model.MediaType)
+                    <div class="col-md-8">
+                        @Html.EnumDropDownListFor(model => model.MediaType, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MediaType)
+                    </div>
+                </div>
+                <div class="form-group">
                     @Html.DisplayNameFor(model => model.HebrewTitle)
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.HebrewTitle, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.HebrewTitle, new {htmlAttributes = new {@class = "form-control"}})
                         @Html.ValidationMessageFor(model => model.HebrewTitle)
                     </div>
                 </div>
@@ -23,7 +29,7 @@
                 <div class="form-group">
                     @Html.DisplayNameFor(model => model.EnglishTitle)
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.EnglishTitle, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.EnglishTitle, new {htmlAttributes = new {@class = "form-control"}})
                         @Html.ValidationMessageFor(model => model.EnglishTitle)
                     </div>
                 </div>
@@ -31,7 +37,7 @@
                 <div class="form-group">
                     @Html.DisplayNameFor(model => model.ReleaseDate)
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.ReleaseDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.ReleaseDate, new {htmlAttributes = new {@class = "form-control"}})
                         @Html.ValidationMessageFor(model => model.ReleaseDate)
                     </div>
                 </div>
@@ -39,7 +45,7 @@
                 <div class="form-group">
                     @Html.DisplayNameFor(model => model.Category)
                     <div class="col-md-8">
-                        @Html.EnumDropDownListFor(model => model.Category, htmlAttributes: new { @class = "form-control" } )
+                        @Html.EnumDropDownListFor(model => model.Category, htmlAttributes: new {@class = "form-control"})
                         @Html.ValidationMessageFor(model => model.Category)
                     </div>
                 </div>
@@ -47,7 +53,7 @@
                 <div class="form-group">
                     @Html.DisplayNameFor(model => model.Producers)
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.Producers, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Producers, new {htmlAttributes = new {@class = "form-control"}})
                         @Html.ValidationMessageFor(model => model.Producers)
                     </div>
                 </div>
@@ -55,7 +61,7 @@
                 <div class="form-group">
                     @Html.DisplayNameFor(model => model.Directors)
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.Directors, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Directors, new {htmlAttributes = new {@class = "form-control"}})
                         @Html.ValidationMessageFor(model => model.Directors)
                     </div>
                 </div>
@@ -63,7 +69,7 @@
                 <div class="form-group">
                     @Html.DisplayNameFor(model => model.Actors)
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.Actors, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Actors, new {htmlAttributes = new {@class = "form-control"}})
                         @Html.ValidationMessageFor(model => model.Actors)
                     </div>
                 </div>
@@ -71,7 +77,7 @@
                 <div class="form-group">
                     @Html.DisplayNameFor(model => model.Length)
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.Length, new { htmlAttributes = new { @class = "form-control", min = 0, max = 600 } })
+                        @Html.EditorFor(model => model.Length, new {htmlAttributes = new {@class = "form-control", min = 0, max = 600}})
                         @Html.ValidationMessageFor(model => model.Length)
                     </div>
                 </div>
@@ -79,7 +85,7 @@
                 <div class="form-group">
                     @Html.DisplayNameFor(model => model.Summery)
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.Summery, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Summery, new {htmlAttributes = new {@class = "form-control"}})
                         @Html.ValidationMessageFor(model => model.Summery)
                     </div>
                 </div>
@@ -87,35 +93,48 @@
                 <div class="form-group">
                     @Html.DisplayNameFor(model => model.Image)
                     <div class="col-md-8">
-                        <input type="file" name="Image" id="Image" accept="Image/png" />
+                        <input type="file" name="Image" id="Image" accept="Image/png"/>
                     </div>
                 </div>
             </div>
 
+            <div class="alert alert-warning alert-dismissible" role="alert" id="image-error">
+                <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                ניתן להעלות רק קבצי תמונה מסוג png אנא בחר קובץ תמונה אחר.
+            </div>
+
             <div class="form-group row">
                 <div class="col-md-8">
-                    <input type="submit" value="הוסף" class="btn btn-info" />
+                    <input type="submit" value="הוסף" class="btn btn-info"/>
                 </div>
             </div>
         </div>
     }
-    @section Scripts {
+
+    @section Scripts
+    {
         @Scripts.Render("~/bundles/jqueryval")
 
         <script language="javascript" type="text/javascript">
-        function validateImageType() {
-            $file = $("#Image");
-            var $filePath = $.trim($file.val());
+            $('.alert .close').on('click', function (e) {
+                $(this).parent().hide();
+            });
 
-            var $ext = $filePath.split(".").pop().toLowerCase();
-            if ($ext != "png" && $filePath != "") {
-                alert("Only png image files are accepted, please browse a image file");
-                return false;
+            $('#image-error').hide();
+
+            function validateImageType() {
+                $file = $("#Image");
+                var $filePath = $.trim($file.val());
+
+                var $ext = $filePath.split(".").pop().toLowerCase();
+                if ($ext != "png" && $filePath != "") {
+                    //alert("Only png image files are accepted, please browse a image file");
+                    $('#image-error').show();
+                    return false;
+                }
+
+                return true;
             }
-
-            return true;
-        }
         </script>
-
     }
 </body>

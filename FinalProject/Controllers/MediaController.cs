@@ -19,11 +19,11 @@ namespace FinalProject.Controllers
 
         public ActionResult AllMovies()
         {
-            return View(ctx.Media.Where<Media>(x => x.mediaType == MediaType.Movie).ToList());
+            return View(ctx.Media.Where<Media>(x => x.MediaType == MediaType.Movie).ToList());
         }
 
         // GET: Media
-        public ActionResult AddMovie()
+        public ActionResult AddMedia()
         {
             return View();
         }

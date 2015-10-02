@@ -17,6 +17,7 @@ namespace FinalProject.Models
         public Media(MediaViewModel mediaViewModel)
         {
             Id = mediaViewModel.Id;
+            MediaType = mediaViewModel.MediaType;
             HebrewTitle = mediaViewModel.HebrewTitle;
             EnglishTitle = mediaViewModel.EnglishTitle;
             Category = mediaViewModel.Category;
@@ -38,7 +39,7 @@ namespace FinalProject.Models
 
         public Guid Id { get; set; }
 
-        public MediaType mediaType { get; set; }
+        public MediaType MediaType { get; set; }
 
         public string HebrewTitle { get; set; }
 
