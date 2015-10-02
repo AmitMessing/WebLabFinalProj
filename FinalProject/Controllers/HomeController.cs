@@ -20,11 +20,11 @@ namespace FinalProject.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            List<IMedia> mediaList = new List<IMedia>(ctx.Media.ToList());
+            List<Media> mediaList = new List<Media>(ctx.Media.ToList());
             return View(mediaList);
         }
 
-        public ActionResult GetMovie(Guid id = default(Guid))
+        public ActionResult GetMedia(Guid id = default(Guid))
         {
             return RedirectToAction("MediaDetails", "Media", new {id = id});
         }

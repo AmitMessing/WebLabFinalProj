@@ -9,33 +9,44 @@ namespace FinalProject.Models
 {
     public interface IMedia
     {
-        Guid Id { get; set; }
-
+        [DisplayName("סוג")]
         MediaType MediaType { get; set; }
 
+        [DisplayName("כותרת בעברית")]
         string HebrewTitle { get; set; }
 
+        [DisplayName("כותרת באנגלית")]
         string EnglishTitle { get; set; }
 
+        [DisplayName("ז'אנר")]
         Category Category { get; set; }
 
+        [DisplayName("תקציר")]
         string Summery { get; set; }
 
-        /// <summary>From imdb</summary>
-        double Rank { get; set; }     
+        [DisplayName("דירוג")]
+        double Rank { get; set; }
 
+        [DisplayName("תאריך יציאה לעולם")]
+        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         DateTime ReleaseDate { get; set; }
 
-        /// <summary> In minutes </summary>
-        int Length { get; set; }
+        [DisplayName("אורך")]
+         int Length { get; set; }
 
+        [DisplayName("במאי")]
         string Directors { get; set; }
 
+        [DisplayName("מפיק")]
         string Producers { get; set; }
 
+        [DisplayName("שחקנים")]
         string Actors { get; set; }
 
         string Image { get; set; }
+
+        List<Comment> Comments { get; set; }
     }
 
     public enum MediaType
@@ -45,7 +56,7 @@ namespace FinalProject.Models
         [Display(Name = "סרט")]
         Movie,
         [Display(Name = "סדרה")]
-        Serie
+        Series
     }
 
     public enum Category

@@ -13,14 +13,14 @@
 
 .image-column {
     height: 100%;
-    border-right: 1px solid silver;
     padding-top: 10px;
     padding-bottom: 10px;
+    border-right: 1px solid silver;
 }
 
 .image-column img {
    width: 100%; 
-   height: 413px;
+   height: 494px;
 }
 
 .media-details-row {
@@ -29,6 +29,10 @@
 
 .content-column {
     padding-right: 20px;
+}
+
+.comments-content {
+    height: 200px;
 }
 
 .media-content {

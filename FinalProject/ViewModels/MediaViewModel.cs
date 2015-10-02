@@ -1,5 +1,6 @@
 ﻿using FinalProject.Models;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -12,10 +13,12 @@ namespace FinalProject.ViewModels
     {
         public MediaViewModel()
         {
-
+            Comments = new List<Comment>();
         }
 
         public MediaViewModel(Media media){
+            Comments = new List<Comment>();
+
             Id = media.Id;
             MediaType = MediaType.None;
             HebrewTitle = media.HebrewTitle;
@@ -28,6 +31,8 @@ namespace FinalProject.ViewModels
             Directors = media.Directors;
             Producers = media.Producers;
             Actors = media.Actors;
+            Comments = media.Comments;
+
         }
 
         public Guid Id { get; set; }
@@ -68,6 +73,9 @@ namespace FinalProject.ViewModels
 
         [DisplayName("שחקנים")]
         public string Actors { get; set; }
+
+        [DisplayName("תגובות")]
+        public List<Comment> Comments { get; set; }
 
         [DisplayName("תמונה")]
         public HttpPostedFileBase Image { get; set; }

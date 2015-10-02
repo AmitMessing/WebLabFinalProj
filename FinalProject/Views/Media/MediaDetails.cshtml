@@ -48,8 +48,20 @@
             </div>
 
         </div>
-        <div class="row">
-
+        <div class="row comments-content media-content">
+            <h2>תגובות:</h2>
+            @foreach (var comment in Model.Comments)
+            {
+                @Html.HiddenFor(item => comment.Id)
+                <div class="row content-row">
+                    <div class="col-md-2">@Html.DisplayFor(item => comment.Date)- @Html.DisplayFor(item => comment.User.UserName) </div>
+                    <div class="col-md-5">
+                       @Html.DisplayFor(item => comment.Title)
+                    </div>
+                    <div class="col-md-5">@Html.DisplayFor(item => comment.Content)
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </body>
