@@ -19,10 +19,7 @@ namespace FinalProject.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            List<IMedia> mediaList = new List<IMedia>();
-            mediaList.AddRange(ctx.Movies.ToList());
-            mediaList.AddRange(ctx.Series.ToList());
-
+            List<IMedia> mediaList = new List<IMedia>(ctx.Media.ToList());
             return View(mediaList);
         }
 

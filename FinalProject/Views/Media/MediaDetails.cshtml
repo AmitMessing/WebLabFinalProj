@@ -1,0 +1,26 @@
+﻿@model FinalProject.Models.Media
+
+@{
+    ViewBag.Title = "MovieDetails";
+}
+
+<body dir="rtl">
+<div class="site-content">
+    <div class="row" style="height: 100%">
+        <div class="col-md-6 content-column">
+            <div class="row content-row">
+                <div class="col-md-3">@Html.DisplayFor(item => item.ReleaseDate.Year)</div>
+                <div class="col-md-5">@Html.DisplayFor(item => item.HebrewTitle)</div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img style="width: 100%" src="data:image/png;base64,@Html.DisplayFor(item => item.Image)"/>
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+</div>
+</body>
+

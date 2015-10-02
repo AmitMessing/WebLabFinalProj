@@ -11,6 +11,8 @@ namespace FinalProject.Models
     {
         Guid Id { get; set; }
 
+        MediaType mediaType { get; set; }
+
         string HebrewTitle { get; set; }
 
         string EnglishTitle { get; set; }
@@ -36,6 +38,13 @@ namespace FinalProject.Models
         string Image { get; set; }
     }
 
+    public enum MediaType
+    {
+        [Display(Name = "סרט")]
+        Movie,
+        [Display(Name = "סדרה")]
+        Serie
+    }
 
     public enum Category
     {
