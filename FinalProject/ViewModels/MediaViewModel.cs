@@ -17,6 +17,7 @@ namespace FinalProject.ViewModels
 
         public MediaViewModel(Media media){
             Id = media.Id;
+            MediaType = MediaType.None;
             HebrewTitle = media.HebrewTitle;
             EnglishTitle = media.EnglishTitle;
             Category = media.Category;
@@ -30,6 +31,9 @@ namespace FinalProject.ViewModels
         }
 
         public Guid Id { get; set; }
+
+        [DisplayName("סוג המדיה")]
+        public MediaType MediaType { get; set; }
 
         [DisplayName("שם בעברית")]
         public string HebrewTitle { get; set; }
