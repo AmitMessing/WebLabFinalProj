@@ -1,6 +1,7 @@
 ﻿using FinalProject.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -25,7 +26,7 @@ namespace FinalProject.Controllers
 
         public ActionResult GetMovie(Guid id = default(Guid))
         {
-            return RedirectToAction("MovieDetails", "Movie", new {id = id});
+            return RedirectToAction("MediaDetails", "Media", new {id = id});
         }
     }
 }

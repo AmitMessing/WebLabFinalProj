@@ -17,13 +17,13 @@ namespace FinalProject.Controllers
             ctx = new SiteContext();
         }
 
-        public ActionResult AllMovies()
+        public ActionResult AllMovie()
         {
             return View(ctx.Media.Where<Media>(x => x.mediaType == MediaType.Movie).ToList());
         }
 
         // GET: Media
-        public ActionResult AddMovie()
+        public ActionResult AddMedia()
         {
             return View();
         }

@@ -11,12 +11,12 @@
                     {
                         @Html.HiddenFor(item => media.Id)
                         <div class="row content-row">
-                            <div class="col-md-3">@Html.DisplayFor(item => media.ReleaseDate.Year)</div>
+                            <div class="col-md-2">@Html.DisplayFor(item => media.ReleaseDate.Year)</div>
                             <div class="col-md-5">
                                 @Html.ActionLink(media.HebrewTitle, "GetMovie", new { id = media.Id })
                                 
                             </div>
-                            <div class="col-md-4"><img style="width:100%" src="data:image/png;base64,@Html.DisplayFor(item => media.Image)" /></div>
+                            <div class="col-md-5"><img style="width: 100%; height: 130px" src="data:image/png;base64,@Html.DisplayFor(item => media.Image)" /></div>
                         </div>
                     }
                 }
