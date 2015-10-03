@@ -34,10 +34,10 @@
                                 <div class="col-md-12">
                                     @if (Session["LoggedinUserType"] != null && Session["LoggedinUserType"].ToString() == "Manager")
                                     {
-                                        <a href="@Url.Action("DeleteMedia", "Media", new{ media})">
+                                        <a href="@Url.Action("DeleteMedia", "Media", new{ id = media.Id})">
                                             <span class="btn glyphicon glyphicon-trash"></span>
                                         </a>
-                                        <a href="@Url.Action("EditMedia", "Media", new { id = media.Id })">
+                                        <a href="@Url.Action("EditMedia", "Media", new { media.Id })">
                                             <span class="btn glyphicon glyphicon-pencil"></span>
                                         </a>
                                     }
@@ -70,10 +70,10 @@
                                     <div class="col-md-12">
                                         @if (Session["LoggedinUserType"] != null && Session["LoggedinUserType"].ToString() == "Manager")
                                         {
-                                            <a href="@Url.Action("DeleteMedia", "Media", new { media })">
+                                            <a href="@Url.Action("DeleteMedia", "Media", new { id = media.Id })">
                                                <span class="btn glyphicon glyphicon-trash"></span>
                                             </a>
-                                            <a href="@Url.Action("EditMedia", "Media", new{ id = media.Id})">
+                                            <a href="@Url.Action("EditMedia", "Media", new{ media.Id})">
                                                 <span class="btn glyphicon glyphicon-pencil"></span>
                                             </a>
                                         }

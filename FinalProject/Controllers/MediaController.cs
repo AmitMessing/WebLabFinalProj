@@ -40,8 +40,6 @@ namespace FinalProject.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteMedia(Guid id = default (Guid))
         {
             var media = ctx.Media.Find(id);
