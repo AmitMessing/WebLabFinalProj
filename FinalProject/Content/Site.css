@@ -11,11 +11,25 @@
     padding-right: 15px;
 }
 
+.comment-design {
+    border: 1px solid #A5D5D0;
+    padding: 6px;
+    margin-bottom: 5px
+}
+
+.comment-design h2 {
+    margin-top: 0px;
+}
+
 .image-column {
     height: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
     border-right: 1px solid silver;
+}
+
+.comment-time-user {
+    font-size: smaller;
 }
 
 .image-column img {
@@ -29,10 +43,16 @@
 
 .content-column {
     padding-right: 20px;
+    border-right: 1px solid silver;
+}
+
+.comment-content-size {
+    font-size: small;
 }
 
 .comments-content {
-    height: 200px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .media-content {

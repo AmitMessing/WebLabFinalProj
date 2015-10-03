@@ -137,6 +137,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\IMedia.cs" />
     <Compile Include="Models\Media.cs" />
+    <Compile Include="Models\MediaCommentViewModel.cs" />
     <Compile Include="Models\SiteContext.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -18,7 +19,11 @@ namespace FinalProject.Models
 
         public DateTime Date { get; set; }
 
-        public User User { get; set; }
+        public Guid UserId { get; set; }
+
         public Guid MediaId { get; set; }
+
+        [ForeignKey("MediaId")]
+        public Media Media { get; set; }
     }
 }

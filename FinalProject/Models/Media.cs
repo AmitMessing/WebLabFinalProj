@@ -8,7 +8,7 @@ using System.Web;
 
 namespace FinalProject.Models
 {
-    public class Media: IMedia
+    public class Media : IMedia
     {
         public Media()
         {
@@ -85,6 +85,7 @@ namespace FinalProject.Models
 
         [DisplayName("תגובות")]
         public List<Comment> Comments { get; set; }
-    }
 
+
+    }
 }
