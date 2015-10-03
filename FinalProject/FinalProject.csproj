@@ -191,6 +191,8 @@
     <Content Include="Views\Media\AddMedia.cshtml" />
     <Content Include="Views\Media\AllMovie.cshtml" />
     <Content Include="Views\Media\MediaDetails.cshtml" />
+    <Content Include="Views\Media\EditMediaa.cshtml" />
+    <Content Include="Views\Media\EditMedia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

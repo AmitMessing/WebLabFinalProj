@@ -57,8 +57,9 @@ namespace FinalProject.ViewModels
         [DisplayName("דירוג")]
         public double Rank { get; set; }
 
-        [DataType(DataType.Date)]
         [DisplayName("תאריך יציאה לעולם")]
+        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
 
         /// <summary> In minutes </summary>

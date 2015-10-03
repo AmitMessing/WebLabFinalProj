@@ -14,7 +14,7 @@
 .comment-design {
     border: 1px solid #A5D5D0;
     padding: 6px;
-    margin-bottom: 5px
+    margin-bottom: 5px;
 }
 
 .comment-design h2 {
@@ -65,6 +65,7 @@
 .content-row {
     padding-top: 10px;
     height: 135px;
+    padding-right: 6px;
 }
 
 

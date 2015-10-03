@@ -2,6 +2,7 @@
 using FinalProject.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
@@ -35,6 +36,67 @@ namespace FinalProject.Controllers
         {
             mediaViewModel.Id = Guid.NewGuid();
             ctx.Media.Add(new Media(mediaViewModel));
+            ctx.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteMedia(Guid id = default (Guid))
+        {
+            var media = ctx.Media.Find(id);
+            if (media != null)
+            {
+                ctx.Media.Remove(media);
+            }
+            ctx.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult EditMedia(Guid id = default(Guid))
+        {
+            Media media = ctx.Media.Find(id);
+            if (media == null)
+            {
+                return HttpNotFound();
+            }
+            media.ReleaseDate = media.ReleaseDate.Date;
+            return View(media);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditMedia(MediaViewModel mediaViewModel)
+        {
+            var media = ctx.Media.Find(mediaViewModel.Id);
+            if (media != null)
+            {
+                media.Actors = mediaViewModel.Actors;
+                media.Category = mediaViewModel.Category;
+                media.Directors = mediaViewModel.Directors;
+                media.EnglishTitle = mediaViewModel.EnglishTitle;
+                media.HebrewTitle = mediaViewModel.HebrewTitle;
+                media.Length = mediaViewModel.Length;
+                media.MediaType = mediaViewModel.MediaType;
+                media.Producers = mediaViewModel.Producers;
+                media.Rank = mediaViewModel.Rank;
+                media.ReleaseDate = mediaViewModel.ReleaseDate;
+
+                if (mediaViewModel.Image != null)
+                {
+                    if (mediaViewModel.Image.ContentLength > 0)
+                    {
+                        byte[] fileBytes = new byte[mediaViewModel.Image.InputStream.Length];
+                        int byteCount = mediaViewModel.Image.InputStream.Read(fileBytes, 0,
+                            (int)mediaViewModel.Image.InputStream.Length);
+                        media.Image = Convert.ToBase64String(fileBytes);
+                    }
+                }
+            }
+
+            ctx.Entry(media).State = EntityState.Modified;
+            ctx.SaveChanges();
             ctx.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
