@@ -2,42 +2,58 @@
 @model IEnumerable<FinalProject.Models.Media>
 
 <body dir="rtl">
-    <div class="site-content">
-        <div class="row" style="height: 100%">
-            <div class="col-md-6 content-column">
-                @foreach (var media in Model)
-                {
-                    if (media.MediaType == MediaType.Movie)
-                    {
-                        @Html.HiddenFor(item => media.Id)
-                        <div class="row content-row">
-                            <div class="col-md-2">@Html.DisplayFor(item => media.ReleaseDate.Year)</div>
-                            <div class="col-md-5">
-                                @Html.ActionLink(media.HebrewTitle, "GetMedia", new { id = media.Id })
-                                
-                            </div>
-                            <div class="col-md-5"><img style="width: 100%; height: 130px" src="data:image/png;base64,@Html.DisplayFor(item => media.Image)" /></div>
-                        </div>
-                    }
-                }
+@using (Html.BeginForm("SimpleSearch", "Search"))
+{
+    <div class="container-fluid" style="display: -webkit-box;">
+        <form class="navbar-form navbar-left row" role="search">
+            <div class="form-control btn btn-link">@Html.ActionLink("חיפוש מתקדם", "AdvanceSearch", "Search")</div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="חיפוש" name="searchString">
             </div>
-            <div class="col-md-6">
-                @foreach (var media in Model)
+            <button type="submit" class="btn btn-info glyphicon glyphicon-search"></button>
+        </form>
+    </div>
+}
+<div class="site-content">
+    <div class="row" style="height: 100%">
+        <div class="col-md-6 content-column">
+            @foreach (var media in Model)
+            {
+                if (media.MediaType == MediaType.Movie)
                 {
-                    if (media.MediaType == MediaType.Series)
-                    {
-                        @Html.HiddenFor(item => media.Id)
-                        <div class="row content-row">
-                            <div class="col-md-2">@Html.DisplayFor(item => media.ReleaseDate.Year)</div>
-                            <div class="col-md-5">
-                                @Html.ActionLink(media.HebrewTitle, "GetMedia", new { id = media.Id })
+                    @Html.HiddenFor(item => media.Id)
+                    <div class="row content-row">
+                        <div class="col-md-2">@Html.DisplayFor(item => media.ReleaseDate.Year)</div>
+                        <div class="col-md-5">
+                            @Html.ActionLink(media.HebrewTitle, "GetMedia", new {id = media.Id})
 
-                            </div>
-                            <div class="col-md-5"><img style="width: 100%; height: 130px" src="data:image/png;base64,@Html.DisplayFor(item => media.Image)" /></div>
                         </div>
-                    }
+                        <div class="col-md-5">
+                            <img style="width: 100%; height: 130px" src="data:image/png;base64,@Html.DisplayFor(item => media.Image)"/>
+                        </div>
+                    </div>
                 }
-            </div>
+            }
+        </div>
+        <div class="col-md-6">
+            @foreach (var media in Model)
+            {
+                if (media.MediaType == MediaType.Series)
+                {
+                    @Html.HiddenFor(item => media.Id)
+                    <div class="row content-row">
+                        <div class="col-md-2">@Html.DisplayFor(item => media.ReleaseDate.Year)</div>
+                        <div class="col-md-5">
+                            @Html.ActionLink(media.HebrewTitle, "GetMedia", new {id = media.Id})
+
+                        </div>
+                        <div class="col-md-5">
+                            <img style="width: 100%; height: 130px" src="data:image/png;base64,@Html.DisplayFor(item => media.Image)"/>
+                        </div>
+                    </div>
+                }
+            }
         </div>
     </div>
+</div>
 </body>
