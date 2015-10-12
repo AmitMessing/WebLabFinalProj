@@ -51,6 +51,17 @@ namespace FinalProject.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult DeleteComment(Guid id = default (Guid))
+        {
+            var comment = ctx.Comments.Find(id);
+            if (comment != null)
+            {
+                ctx.Comments.Remove(comment);
+            }
+            ctx.SaveChanges();
+            return RedirectToAction("MediaDetails", new { id = comment.MediaId});
+        }
+
         public ActionResult EditMedia(Guid id = default(Guid))
         {
             Media media = ctx.Media.Find(id);

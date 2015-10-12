@@ -99,7 +99,15 @@
                 @Html.HiddenFor(item => comment.Id)
                 <div class="comment-design">
                     <div class="row">
-                        <div class="col-md-12 comment-time-user">@Html.DisplayFor(item => comment.Date) - @Session["LoggedinUserName"] </div>
+                        <div class="col-md-2">
+                            @if (Session["LoggedinUserType"] != null && Session["LoggedinUserType"].ToString() == "Manager")
+                            {
+                                <a href="@Url.Action("DeleteComment", "Media", new {id = comment.Id})">
+                                    <span class="btn glyphicon glyphicon-trash"></span>
+                                </a>
+                            }
+                        </div>
+                        <div class="col-md-10 comment-time-user">@Html.DisplayFor(item => comment.Date) - @Session["LoggedinUserName"] </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
