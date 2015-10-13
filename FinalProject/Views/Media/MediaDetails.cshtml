@@ -9,7 +9,7 @@
 <div class="site-content">
     <div class="row media-details-row">
         <div class="col-md-6 image-column">
-            <img src="data:image/png;base64,@Html.DisplayFor(item => item.Media.Image)"/>
+            <canvas id="mediaPic" width="400" height="494"></canvas>
         </div>
         <div class="col-md-6 media-content">
             <h1>@Html.DisplayFor(item => item.Media.HebrewTitle)</h1>
@@ -130,24 +130,24 @@
         @Scripts.Render("~/bundles/jqueryval")
 
         <script language="javascript" type="text/javascript">
-            
-            (function (d, s, id) {
-                var js, stags = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {
-                    return;
-                }
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "http://g-ec2.images-amazon.com/images/G/01/imdb/plugins/rating/js/rating.min.js";
-                stags.parentNode.insertBefore(js, stags);
-            })
-            (document, 'script', 'imdb-rating-api');
 
-            var imdbId;
-            $(document).ready(function () {
-                $.ajax({
-                    dataType: "json",
-                    url: "http://www.omdbapi.com/?t=@Model.Media.EnglishTitle",
+    (function (d, s, id) {
+        var js, stags = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "http://g-ec2.images-amazon.com/images/G/01/imdb/plugins/rating/js/rating.min.js";
+        stags.parentNode.insertBefore(js, stags);
+    })
+    (document, 'script', 'imdb-rating-api');
+
+    var imdbId;
+    $(document).ready(function () {
+        $.ajax({
+            dataType: "json",
+            url: "http://www.omdbapi.com/?t=@Model.Media.EnglishTitle",
                     success: function (result) {
                         $('#imdbRating')[0].innerHTML = '<span class="imdbRatingPlugin" data-user="ur62979138" data-title="' + result.imdbID + '" data-style="p3">' +
                             '<a href="http://www.imdb.com/title/' + result.imdbID + '/?ref_=plg_rt_1">' +
@@ -161,6 +161,15 @@
             if (document.getElementById("btnComment").name === "") {
                 document.getElementById("btnComment").disabled = true;
             }
+
+            var canvas = document.getElementById('mediaPic');
+            var context = canvas.getContext('2d');
+            var imageObj = new Image();
+
+            imageObj.onload = function () {
+                context.drawImage(imageObj, 0, 0, 400, 494);
+            };
+            imageObj.src = 'data:image/png;base64,@Html.DisplayFor(item => item.Media.Image)';
         </script>
     }
 </body>
