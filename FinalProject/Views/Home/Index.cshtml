@@ -2,6 +2,13 @@
 @model IEnumerable<FinalProject.Models.Media>
 
 <body dir="rtl">
+<div class="row">
+    <div class="col-md-10">
+        <video id="homevideo" width="80%" controls="true" autoplay onended="run()">
+            <source src="http://movietrailers.apple.com/movies/disney/insideout/insideout-usca-tlr2_h720p.mov" type="video/mp4">
+        </video>
+    </div>
+</div>
 @using (Html.BeginForm("SimpleSearch", "Search"))
 {
     <div class="container-fluid" style="display: -webkit-box;">
@@ -14,6 +21,7 @@
         </form>
     </div>
 }
+
 <div class="site-content">
     <div class="row" style="height: 100%">
         <div class="col-md-6 content-column">
@@ -27,17 +35,17 @@
                             <div class="row">
                                 <div class="col-md-4">@Html.DisplayFor(item => media.ReleaseDate.Year)</div>
                                 <div class="col-md-8">
-                                    @Html.ActionLink(media.HebrewTitle, "GetMedia", new { id = media.Id })
+                                    @Html.ActionLink(media.HebrewTitle, "GetMedia", new {id = media.Id})
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     @if (Session["LoggedinUserType"] != null && Session["LoggedinUserType"].ToString() == "Manager")
                                     {
-                                        <a href="@Url.Action("DeleteMedia", "Media", new{ id = media.Id})">
+                                        <a href="@Url.Action("DeleteMedia", "Media", new {id = media.Id})">
                                             <span class="btn glyphicon glyphicon-trash"></span>
                                         </a>
-                                        <a href="@Url.Action("EditMedia", "Media", new { media.Id })">
+                                        <a href="@Url.Action("EditMedia", "Media", new {media.Id})">
                                             <span class="btn glyphicon glyphicon-pencil"></span>
                                         </a>
                                     }
@@ -63,17 +71,17 @@
                                 <div class="row">
                                     <div class="col-md-4">@Html.DisplayFor(item => media.ReleaseDate.Year)</div>
                                     <div class="col-md-8">
-                                        @Html.ActionLink(media.HebrewTitle, "GetMedia", new { id = media.Id })
+                                        @Html.ActionLink(media.HebrewTitle, "GetMedia", new {id = media.Id})
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         @if (Session["LoggedinUserType"] != null && Session["LoggedinUserType"].ToString() == "Manager")
                                         {
-                                            <a href="@Url.Action("DeleteMedia", "Media", new { id = media.Id })">
-                                               <span class="btn glyphicon glyphicon-trash"></span>
+                                            <a href="@Url.Action("DeleteMedia", "Media", new {id = media.Id})">
+                                                <span class="btn glyphicon glyphicon-trash"></span>
                                             </a>
-                                            <a href="@Url.Action("EditMedia", "Media", new{ media.Id})">
+                                            <a href="@Url.Action("EditMedia", "Media", new {media.Id})">
                                                 <span class="btn glyphicon glyphicon-pencil"></span>
                                             </a>
                                         }
@@ -81,7 +89,7 @@
                                 </div>
                             </div>
                             <div class="col-md-5">
-                                <img style="width: 100%; height: 130px" src="data:image/png;base64,@Html.DisplayFor(item => media.Image)" />
+                                <img style="width: 100%; height: 130px" src="data:image/png;base64,@Html.DisplayFor(item => media.Image)"/>
                             </div>
                         </div>
                     }
@@ -90,4 +98,27 @@
         </div>
     </div>
 </div>
+    @section Scripts
+    {
+        @Scripts.Render("~/bundles/jqueryval")
+
+        <script language="javascript" type="text/javascript">
+            var videos = ['http://movietrailers.apple.com/movies/disney/insideout/insideout-usca-tlr2_h720p.mov',
+                          'http://movietrailers.apple.com/movies/lionsgate/thehungergamesmockingjaypart2/mockingjaypt2-tlr4_h720p.mov',
+                          'http://movietrailers.apple.com/movies/independent/uponthewooftop/uponthewooftop-tlr1_h720p.mov',
+                          'http://movietrailers.apple.com/movies/entertainmentone/lostinthesun/lostinthesun-tlr1_h720p.mov'];
+            var video_count = 1;
+            var videoPlayer = document.getElementById("homevideo");
+
+            function run() {
+                video_count++;
+                if (video_count === 3) video_count = 1;
+                var nextVideo = videos[video_count];
+                videoPlayer.src = nextVideo;
+                videoPlayer.play();
+            };
+
+        </Script>
+    }
 </body>
+
