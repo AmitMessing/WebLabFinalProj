@@ -169,3 +169,8 @@ textarea {
     width: 70%;
     height: 100%;
 }
+
+.search-content-row {
+    padding-top: 10px;
+    height: 200px;
+}

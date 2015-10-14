@@ -47,7 +47,7 @@ namespace FinalProject.ViewModels
         public string EnglishTitle { get; set; }
 
         [DisplayName("ז'אנר")]
-        public Category Category { get; set; }
+        public enmCategory Category { get; set; }
 
         [DataType(DataType.MultilineText)]
         [DisplayName("תקציר")]

@@ -19,7 +19,7 @@ namespace FinalProject.Models
         string EnglishTitle { get; set; }
 
         [DisplayName("ז'אנר")]
-        Category Category { get; set; }
+        enmCategory Category { get; set; }
 
         [DisplayName("תקציר")]
         string Summery { get; set; }
@@ -59,7 +59,7 @@ namespace FinalProject.Models
         Series
     }
 
-    public enum Category
+    public enum enmCategory
     {
         [Display(Name = "קומדיה")]
         Comedy,

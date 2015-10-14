@@ -193,10 +193,11 @@
     <Content Include="Views\Media\MediaDetails.cshtml" />
     <Content Include="Views\Media\EditMediaa.cshtml" />
     <Content Include="Views\Media\EditMedia.cshtml" />
+    <Content Include="Views\Search\Result.cshtml" />
+    <Content Include="Views\Search\AdvanceSearchInstruction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

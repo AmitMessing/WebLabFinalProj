@@ -37,7 +37,7 @@ namespace FinalProject.Models
                 {
                     byte[] fileBytes = new byte[mediaViewModel.Image.InputStream.Length];
                     int byteCount = mediaViewModel.Image.InputStream.Read(fileBytes, 0,
-                        (int) mediaViewModel.Image.InputStream.Length);
+                        (int)mediaViewModel.Image.InputStream.Length);
                     Image = Convert.ToBase64String(fileBytes);
                 }
             }
@@ -55,7 +55,7 @@ namespace FinalProject.Models
         public string EnglishTitle { get; set; }
 
         [DisplayName("ז'אנר")]
-        public Category Category { get; set; }
+        public enmCategory Category { get; set; }
 
         [DisplayName("תקציר")]
         public string Summery { get; set; }
@@ -85,7 +85,6 @@ namespace FinalProject.Models
 
         [DisplayName("תגובות")]
         public List<Comment> Comments { get; set; }
-
-
     }
+
 }
