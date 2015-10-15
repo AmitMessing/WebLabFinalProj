@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body dir="rtl">
-<div class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="site-header row">
         <div class="col-md-2 name-header">
             @if (Session["LoggedinUserName"] != null)
@@ -45,17 +45,18 @@
             <label class="site-menu-items"> @Html.ActionLink("ניהול", "AddMedia", "Media")</label>
         }
     </div>
-</div>
+    </nav>
 
     <div class="container body-content site-container">
         @RenderBody()
-        <hr />
-        <footer></footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <footer>
+        <p>&#169; Yoni & Amit</p>
+    </footer>
 </body>
 
 </html>

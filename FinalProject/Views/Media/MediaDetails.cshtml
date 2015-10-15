@@ -12,80 +12,84 @@
             <canvas id="mediaPic" width="400" height="494"></canvas>
         </div>
         <div class="col-md-6 media-content">
-            <h1>@Html.DisplayFor(item => item.Media.HebrewTitle)</h1>
-            <h4>@Html.DisplayFor(item => item.Media.EnglishTitle)</h4>
-            <div id="imdbRating" dir="ltr"></div>
-            <div class="row">
-                <b> @Html.LabelFor(item => item.Media.Length):</b>
-                @Html.DisplayFor(item => item.Media.Length) דקות
-            </div>
-            <div class="row">
-                <b> @Html.LabelFor(item => item.Media.Directors):</b>
-                @Html.DisplayFor(item => item.Media.Directors)
-            </div>
-            <div class="row">
-                <b> @Html.LabelFor(item => item.Media.Producers):</b>
-                @Html.DisplayFor(item => item.Media.Producers)
-            </div>
-            <div class="row">
-                <b> @Html.LabelFor(item => item.Media.Producers):</b>
-                @Html.DisplayFor(item => item.Media.Producers)
-            </div>
-            <div class="row">
-                <b> @Html.LabelFor(item => item.Media.Actors):</b>
-                @Html.DisplayFor(item => item.Media.Actors)
-            </div>
-            <div class="row">
-                <b> @Html.LabelFor(item => item.Media.ReleaseDate):</b>
-                @Html.DisplayFor(item => item.Media.ReleaseDate.Year)
-            </div>
-            <div class="row">
-                <b> @Html.LabelFor(item => item.Media.Category):</b>
-                @Html.DisplayFor(item => item.Media.Category)
-            </div>
-            <div class="row">
-                <b> @Html.LabelFor(item => item.Media.Summery):</b>
-                @Html.DisplayFor(item => item.Media.Summery)
-            </div>
-        </div>
+            <header>
+                <h1>@Html.DisplayFor(item => item.Media.HebrewTitle)</h1>
+                <h4>@Html.DisplayFor(item => item.Media.EnglishTitle)</h4>
+            </header>
+                    <div id="imdbRating" dir="ltr"></div>
+                    <div class="row">
+                        <b> @Html.LabelFor(item => item.Media.Length):</b>
+                        @Html.DisplayFor(item => item.Media.Length) דקות
+                    </div>
+                    <div class="row">
+                        <b> @Html.LabelFor(item => item.Media.Directors):</b>
+                        @Html.DisplayFor(item => item.Media.Directors)
+                    </div>
+                    <div class="row">
+                        <b> @Html.LabelFor(item => item.Media.Producers):</b>
+                        @Html.DisplayFor(item => item.Media.Producers)
+                    </div>
+                    <div class="row">
+                        <b> @Html.LabelFor(item => item.Media.Producers):</b>
+                        @Html.DisplayFor(item => item.Media.Producers)
+                    </div>
+                    <div class="row">
+                        <b> @Html.LabelFor(item => item.Media.Actors):</b>
+                        @Html.DisplayFor(item => item.Media.Actors)
+                    </div>
+                    <div class="row">
+                        <b> @Html.LabelFor(item => item.Media.ReleaseDate):</b>
+                        @Html.DisplayFor(item => item.Media.ReleaseDate.Year)
+                    </div>
+                    <div class="row">
+                        <b> @Html.LabelFor(item => item.Media.Category):</b>
+                        @Html.DisplayFor(item => item.Media.Category)
+                    </div>
+                    <div class="row">
+                        <b> @Html.LabelFor(item => item.Media.Summery):</b>
+                        @Html.DisplayFor(item => item.Media.Summery)
+                    </div>
+</div>
 
     </div>
     <div class="row comments-content">
         <div class="col-md-6">
-            <h3>הוסף תגובה:</h3>
-            @using (Html.BeginForm("AddComment", "Media", FormMethod.Post, new {comment = Model.Comment}))
-            {
-                @Html.AntiForgeryToken()
-                @Html.HiddenFor(item => item.Comment.MediaId)
-                <div class="form-horizontal" style="padding-right: 15px;">
+            <section>
+                <h3>הוסף תגובה:</h3>
+                @using (Html.BeginForm("AddComment", "Media", FormMethod.Post, new {comment = Model.Comment}))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(item => item.Comment.MediaId)
+                    <div class="form-horizontal" style="padding-right: 15px;">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Comment.Title, new {htmlAttributes = new {@class = "form-control"}})
+                                    @Html.ValidationMessageFor(model => model.Comment.Title)
+                                </div>
+                                <div class="col-md-2">
+                                    @Html.DisplayNameFor(model => Model.Comment.Title)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.Comment.Content, new {@cols = 37})
+                                    @Html.ValidationMessageFor(model => model.Comment.Content)
+                                </div>
+                                <div class="col-md-2">
+                                    @Html.DisplayNameFor(model => Model.Comment.Content)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Comment.Title, new {htmlAttributes = new {@class = "form-control"}})
-                                @Html.ValidationMessageFor(model => model.Comment.Title)
-                            </div>
-                            <div class="col-md-2">
-                                @Html.DisplayNameFor(model => Model.Comment.Title)
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                @Html.TextAreaFor(model => model.Comment.Content, new {@cols = 37})
-                                @Html.ValidationMessageFor(model => model.Comment.Content)
-                            </div>
-                            <div class="col-md-2">
-                                @Html.DisplayNameFor(model => Model.Comment.Content)
-                            </div>
+                        <div class="col-md-10">
+                            <input type="submit" value="הוסף תגובה" id="btnComment" class="btn site-btn" name="@Session["LoggedinUserName"]">
+                            <label class="label label-primary" id="CommentError">שים לב! רק משתמשים מחוברים יכולים להגיב</label>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-10">
-                        <input type="submit" value="הוסף תגובה" id="btnComment" class="btn site-btn" name="@Session["LoggedinUserName"]">
-                        <label class="label label-primary" id="CommentError">שים לב! רק משתמשים מחוברים יכולים להגיב</label>
-                    </div>
-                </div>
-            }
+                }
+            </section>
         </div>
         <div class="col-md-6">
             <h3>תגובות:</h3>
@@ -93,17 +97,19 @@
             {
                 @Html.HiddenFor(item => comment.Id)
                 <div class="comment-design">
-                    <div class="row">
-                        <div class="col-md-2">
-                            @if (Session["LoggedinUserType"] != null && Session["LoggedinUserType"].ToString() == "Manager")
-                            {
-                                <a href="@Url.Action("DeleteComment", "Media", new {id = comment.Id})">
-                                    <span class="btn glyphicon glyphicon-trash"></span>
-                                </a>
-                            }
+                    <aside>
+                        <div class="row">
+                            <div class="col-md-2">
+                                @if (Session["LoggedinUserType"] != null && Session["LoggedinUserType"].ToString() == "Manager")
+                                {
+                                    <a href="@Url.Action("DeleteComment", "Media", new {id = comment.Id})">
+                                        <span class="btn glyphicon glyphicon-trash"></span>
+                                    </a>
+                                }
+                            </div>
+                            <div class="col-md-10 comment-time-user">@Html.DisplayFor(item => comment.Date) - @Session["LoggedinUserName"] </div>
                         </div>
-                        <div class="col-md-10 comment-time-user">@Html.DisplayFor(item => comment.Date) - @Session["LoggedinUserName"] </div>
-                    </div>
+                    </aside>
                     <div class="row">
                         <div class="col-md-12">
                             <b>@Html.DisplayFor(item => comment.Title)</b>

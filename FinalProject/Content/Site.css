@@ -1,11 +1,20 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px;
     background: white;
-    height: 100%;
 }
 
-/* Set padding to keep content from hitting the edges */
+footer {
+    background: gainsboro;
+    height: 30px;
+    direction: ltr;
+}
+
+footer p {
+    font-size: smaller;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -162,6 +171,7 @@ textarea {
     padding-bottom: 10px;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 20px;
     box-shadow: 1px -1px 29px silver;
 }
 
