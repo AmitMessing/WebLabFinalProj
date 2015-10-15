@@ -1,6 +1,13 @@
-﻿body {
+﻿@font-face {
+   font-family: myFont;
+   src: url(/fonts/osp_le-patin-helvete-webfont.woff);
+}
+
+body {
     padding-top: 50px;
     background: white;
+    height: 82%;
+    font-family: myFont;
 }
 
 footer {
@@ -83,7 +90,13 @@ footer p {
     margin-left: 8px;
     margin-top: 1px;
     font-size: 60px;
+    transition: width 2s, height 2s, transform 2s;
 }
+
+.header-icon:hover {
+    transform: rotate(180deg);
+}
+
 .navbar-inverse {
   background-color: rgb(8, 171, 171);
 }
@@ -94,6 +107,7 @@ footer p {
 .site-menu {
     height: 33%;
     background-color: darkslategray;
+    box-shadow: 1px -1px 55px 0 seashell;
 }
 
 .site-menu-items a{
@@ -101,6 +115,7 @@ footer p {
     margin-right: 120px;
     color: white;
 }
+
 
 .name-header b {
     color: white;
@@ -134,13 +149,11 @@ footer p {
 }
 
 .site-header h1 {
-    background: -webkit-linear-gradient(top, #659CEF, #FFFFFF);
-	background: linear-gradient( lightcyan, #FFFFFF);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px black;
     font-size: 3em;
     font-weight: bold;
     margin-top: 12px;
+    color: white;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -173,6 +186,7 @@ textarea {
     margin-left: auto;
     margin-bottom: 20px;
     box-shadow: 1px -1px 29px silver;
+    border-radius: 5px;
 }
 
 .site-container {
