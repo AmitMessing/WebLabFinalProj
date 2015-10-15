@@ -20,7 +20,7 @@ namespace FinalProject.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            List<Media> mediaList = new List<Media>(ctx.Media.ToList());
+            List<Media> mediaList = new List<Media>(ctx.Media.OrderBy(x => x.ReleaseDate).Take(10).ToList());
             return View(mediaList);
         }
 

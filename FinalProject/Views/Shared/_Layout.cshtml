@@ -34,15 +34,15 @@
     </div>
     <div class="site-menu row">
         <label class="site-menu-items"> @Html.ActionLink("דף הבית", "Index", "Home")</label>
-        <label class="site-menu-items"> @Html.ActionLink("סרטים", "AllMovie", "Media")</label>
-        <label class="site-menu-items"> @Html.ActionLink("סדרות", "AllMovie", "Media")</label>
+        <label class="site-menu-items"> @Html.ActionLink("כל הסרטים", "AllMovie", "Media")</label>
+        <label class="site-menu-items"> @Html.ActionLink("כל הסדרות", "AllSeries", "Media")</label>
         @if (Session["LoggedinUserName"] != null)
         {
             <label class="site-menu-items"> @Html.ActionLink("עריכת פרטי משתמש", "GetUser", "User")</label>
         }
         @if (Session["LoggedinUserType"] != null && Session["LoggedinUserType"].ToString() == "Manager")
         {
-            <label class="site-menu-items"> @Html.ActionLink("ניהול", "AddMedia", "Media")</label>
+            <label class="site-menu-items"> @Html.ActionLink("הוספת מדיה", "AddMedia", "Media")</label>
             <label class="site-menu-items"> @Html.ActionLink("סטטיסטיקות", "Index", "Statistics")</label>
         }
     </div>

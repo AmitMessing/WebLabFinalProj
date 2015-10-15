@@ -24,6 +24,11 @@ namespace FinalProject.Controllers
             return View(ctx.Media.Where(x => x.MediaType == MediaType.Movie).ToList());
         }
 
+        public ActionResult AllSeries()
+        {
+            return View(ctx.Media.Where(x => x.MediaType == MediaType.Series).ToList());
+        }
+
         // GET: Media
         public ActionResult AddMedia()
         {

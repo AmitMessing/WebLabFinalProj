@@ -201,6 +201,7 @@
     <Content Include="Views\Search\AdvanceSearchInstruction.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
+    <Content Include="Views\Media\AllSeries.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

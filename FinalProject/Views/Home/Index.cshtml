@@ -2,68 +2,37 @@
 @model IEnumerable<FinalProject.Models.Media>
 
 <body dir="rtl">
-<div class="row">
-    <div class="col-md-10">
-        <video id="homevideo" width="80%" controls="true" autoplay onended="run()">
-            <source src="http://movietrailers.apple.com/movies/disney/insideout/insideout-usca-tlr2_h720p.mov" type="video/mp4">
-        </video>
-    </div>
-</div>
-@using (Html.BeginForm("Search", "Search"))
-{
-    <div class="container-fluid" style="display: -webkit-box;">
-        <form class="navbar-form navbar-left row" role="search">
-            <div class="form-control btn btn-link">@Html.ActionLink("חיפוש מתקדם", "AdvanceSearchInstruction", "Search")</div>
-            <div class="form-group">
-                <input type="text" class="form-control" style="margin-top: 1px; border-radius: 1px" placeholder="חיפוש" name="searchString">
-            </div>
-            <button style="border-radius: 1px" type="submit" class="btn btn-info glyphicon glyphicon-search"></button>
-        </form>
-    </div>
-}
-
-<div class="site-content">
-    <div class="row" style="height: 100%">
-        <div class="col-md-6 content-column">
-            @foreach (var media in Model)
-            {
-                if (media.MediaType == MediaType.Movie)
-                {
-                    @Html.HiddenFor(item => media.Id)
-                    <div class="row content-row">
-                        <div class="col-md-7">
-                            <div class="row">
-                                <div class="col-md-4">@Html.DisplayFor(item => media.ReleaseDate.Year)</div>
-                                <div class="col-md-8">
-                                    @Html.ActionLink(media.HebrewTitle, "GetMedia", new {id = media.Id})
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    @if (Session["LoggedinUserType"] != null && Session["LoggedinUserType"].ToString() == "Manager")
-                                    {
-                                        <a href="@Url.Action("DeleteMedia", "Media", new {id = media.Id})">
-                                            <span class="btn glyphicon glyphicon-trash"></span>
-                                        </a>
-                                        <a href="@Url.Action("EditMedia", "Media", new {media.Id})">
-                                            <span class="btn glyphicon glyphicon-pencil"></span>
-                                        </a>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5" style="padding: 0;">
-                            <img style="width: 100%; height: 130px" src="data:image/png;base64,@Html.DisplayFor(item => media.Image)"/>
-                        </div>
-                    </div>
-                }
-            }
+    <div class="row">
+        <div class="col-md-10">
+            <video id="homevideo" width="80%" controls="true" autoplay onended="run()">
+                <source src="http://movietrailers.apple.com/movies/disney/insideout/insideout-usca-tlr2_h720p.mov" type="video/mp4">
+            </video>
         </div>
-        <div class="col-md-6">
-            <div class="row">
+    </div>
+    @using (Html.BeginForm("Search", "Search"))
+    {
+        <div class="container-fluid" style="display: -webkit-box;">
+            <form class="navbar-form navbar-left row" role="search">
+                <div class="form-control btn btn-link">@Html.ActionLink("חיפוש מתקדם", "AdvanceSearchInstruction", "Search")</div>
+                <div class="form-group">
+                    <input type="text" class="form-control" style="margin-top: 1px; border-radius: 1px" placeholder="חיפוש" name="searchString">
+                </div>
+                <button style="border-radius: 1px" type="submit" class="btn btn-info glyphicon glyphicon-search"></button>
+            </form>
+        </div>
+    }
+
+    <div class="site-content">
+        <div class="row" style="height: 100%">
+            <div class="col-md-6 content-column">
+                <div class="row">
+                    <div class="col-md-9 home-header">
+                        הסרטים החדשים ביותר
+                    </div>
+                </div>
                 @foreach (var media in Model)
                 {
-                    if (media.MediaType == MediaType.Series)
+                    if (media.MediaType == MediaType.Movie)
                     {
                         @Html.HiddenFor(item => media.Id)
                         <div class="row content-row">
@@ -71,7 +40,7 @@
                                 <div class="row">
                                     <div class="col-md-4">@Html.DisplayFor(item => media.ReleaseDate.Year)</div>
                                     <div class="col-md-8">
-                                        @Html.ActionLink(media.HebrewTitle, "GetMedia", new {id = media.Id})
+                                        @Html.ActionLink(media.HebrewTitle, "GetMedia", new { id = media.Id })
                                     </div>
                                 </div>
                                 <div class="row">
@@ -88,37 +57,78 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-5">
-                                <img style="width: 100%; height: 130px" src="data:image/png;base64,@Html.DisplayFor(item => media.Image)"/>
+                            <div class="col-md-5" style="padding: 0;">
+                                <img style="width: 100%; height: 130px" src="data:image/png;base64,@Html.DisplayFor(item => media.Image)" />
                             </div>
                         </div>
                     }
                 }
             </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-9 home-header">
+                            הסדרות החדשות ביותר
+                        </div>
+                    </div>
+                    @foreach (var media in Model)
+                    {
+                        if (media.MediaType == MediaType.Series)
+                        {
+                            @Html.HiddenFor(item => media.Id)
+                            <div class="row content-row">
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <div class="col-md-4">@Html.DisplayFor(item => media.ReleaseDate.Year)</div>
+                                        <div class="col-md-8">
+                                            @Html.ActionLink(media.HebrewTitle, "GetMedia", new {id = media.Id})
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            @if (Session["LoggedinUserType"] != null && Session["LoggedinUserType"].ToString() == "Manager")
+                                            {
+                                                <a href="@Url.Action("DeleteMedia", "Media", new {id = media.Id})">
+                                                    <span class="btn glyphicon glyphicon-trash"></span>
+                                                </a>
+                                                <a href="@Url.Action("EditMedia", "Media", new {media.Id})">
+                                                    <span class="btn glyphicon glyphicon-pencil"></span>
+                                                </a>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <img style="width: 100%; height: 130px" src="data:image/png;base64,@Html.DisplayFor(item => media.Image)"/>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            </div>
         </div>
-    </div>
-</div>
-    @section Scripts
+        @section Scripts
     {
-        @Scripts.Render("~/bundles/jqueryval")
+            @Scripts.Render("~/bundles/jqueryval")
 
-        <script language="javascript" type="text/javascript">
-            var videos = ['http://movietrailers.apple.com/movies/disney/insideout/insideout-usca-tlr2_h720p.mov',
-                          'http://movietrailers.apple.com/movies/lionsgate/thehungergamesmockingjaypart2/mockingjaypt2-tlr4_h720p.mov',
-                          'http://movietrailers.apple.com/movies/independent/uponthewooftop/uponthewooftop-tlr1_h720p.mov',
-                          'http://movietrailers.apple.com/movies/entertainmentone/lostinthesun/lostinthesun-tlr1_h720p.mov'];
-            var video_count = 1;
-            var videoPlayer = document.getElementById("homevideo");
+            <script language="javascript" type="text/javascript">
+                var videos = ['http://movietrailers.apple.com/movies/disney/insideout/insideout-usca-tlr2_h720p.mov',
+                              'http://movietrailers.apple.com/movies/lionsgate/thehungergamesmockingjaypart2/mockingjaypt2-tlr4_h720p.mov',
+                              'http://movietrailers.apple.com/movies/independent/uponthewooftop/uponthewooftop-tlr1_h720p.mov',
+                              'http://movietrailers.apple.com/movies/entertainmentone/lostinthesun/lostinthesun-tlr1_h720p.mov'];
+                var video_count = 1;
+                var videoPlayer = document.getElementById("homevideo");
 
-            function run() {
-                video_count++;
-                if (video_count === 3) video_count = 1;
-                var nextVideo = videos[video_count];
-                videoPlayer.src = nextVideo;
-                videoPlayer.play();
-            };
+                function run() {
+                    video_count++;
+                    if (video_count === 3) video_count = 1;
+                    var nextVideo = videos[video_count];
+                    videoPlayer.src = nextVideo;
+                    videoPlayer.play();
+                };
 
-        </Script>
-    }
+            </script>
+        }
 </body>
 
