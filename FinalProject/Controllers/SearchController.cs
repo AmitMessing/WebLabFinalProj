@@ -71,7 +71,7 @@ namespace FinalProject.Controllers
                     try
                     {
                         enmCategory category;
-                        category = GetEnumValueFromDescription<enmCategory>(tempStrings[1]);
+                        category = Common.Common.GetEnumValueFromDescription<enmCategory>(tempStrings[1]);
                         searchResult = ctx.Media.Where(x => x.Category == category).ToList();
                     }
                     catch{ }
@@ -104,7 +104,7 @@ namespace FinalProject.Controllers
                         enmCategory category;
                         try
                         {
-                            category = GetEnumValueFromDescription<enmCategory>(tempStrings[1]);
+                            category = Common.Common.GetEnumValueFromDescription<enmCategory>(tempStrings[1]);
                             tempResult = ctx.Media.Where(x => x.MediaType == mediaType);
                             tempResult = tempResult.Where(x => x.Category == category);
                         }
@@ -131,21 +131,6 @@ namespace FinalProject.Controllers
             }
 
             return searchResult;
-        }
-
-        public static T GetEnumValueFromDescription<T>(string name)
-        {
-            MemberInfo[] fis = typeof(T).GetFields();
-
-            foreach (var fi in fis)
-            {
-                DisplayAttribute[] attributes = (DisplayAttribute[])fi.GetCustomAttributes(typeof(DisplayAttribute), false);
-
-                if (attributes != null && attributes.Length > 0 && attributes[0].Name == name)
-                    return (T)Enum.Parse(typeof(T), fi.Name);
-            }
-
-            throw new Exception("Not found");
         }
     }
 }
