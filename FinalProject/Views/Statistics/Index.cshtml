@@ -1,9 +1,10 @@
 ﻿@model FinalProject.Controllers.StatisticsController.DonutData[]
-
+<html style="height: 100%;"></html>
 <body>
-    <div id="donut" class="container body-content site-container">
-    @section Scripts
-    {
+<div class="container row">
+    <div id="donut" class="col-md-1">
+        @section Scripts
+        {
             @Scripts.Render("~/bundles/jqueryval")
 
             <script src="../../Scripts/d3.min.js"></script>
@@ -22,12 +23,25 @@
                 }
 
                 function randomData() {
-                    return data.map(function (d) {
+                    return data.map(function(d) {
                         return { label: d.categoryName, value: d.count, color: d.color };
                     });
                 }
 
             </script>
         }
-        </div>
+    </div>
+    <div class="col-md-10">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.DisplayFor(model => item.categoryName)
+                </div>
+                <div class="col-md-9" style="height: 13px; width: 3px; background-color: @Html.DisplayFor(model => item.color)">
+                </div>
+            </div>
+        }
+    </div>
+</div>
 </body>

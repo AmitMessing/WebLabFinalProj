@@ -43,6 +43,7 @@
         @if (Session["LoggedinUserType"] != null && Session["LoggedinUserType"].ToString() == "Manager")
         {
             <label class="site-menu-items"> @Html.ActionLink("ניהול", "AddMedia", "Media")</label>
+            <label class="site-menu-items"> @Html.ActionLink("סטטיסטיקות", "Index", "Statistics")</label>
         }
     </div>
     </nav>
