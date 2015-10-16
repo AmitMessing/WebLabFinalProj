@@ -161,6 +161,8 @@
     <Content Include="fonts\carmela.woff" />
     <Content Include="fonts\osp_le-patin-helvete-webfont.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\d3.min.js" />
+    <Content Include="Scripts\Donut3D.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

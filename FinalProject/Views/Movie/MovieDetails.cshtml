@@ -7,16 +7,46 @@
 <body dir="rtl">
 <div class="site-content">
     <div class="row" style="height: 100%">
+        <div class="col-md-6 image-column">
+            <img style="width: 100%" src="data:image/png;base64,@Html.DisplayFor(item => item.Image)" />
+        </div>
         <div class="col-md-6 content-column">
+            <h1>@Html.DisplayFor(item => item.HebrewTitle)</h1>
+            <h4>@Html.DisplayFor(item => item.EnglishTitle)</h4>
             <div class="row content-row">
-                <div class="col-md-3">@Html.DisplayFor(item => item.ReleaseDate.Year)</div>
-                <div class="col-md-5">@Html.DisplayFor(item => item.HebrewTitle)</div>
-
+                <b> @Html.LabelFor(item => item.Length):</b>
+                @Html.DisplayFor(item => item.Length) דקות
+            </div>
+            <div class="row content-row">
+                <b> @Html.LabelFor(item => item.Directors):</b>
+                @Html.DisplayFor(item => item.Directors) 
+            </div>
+            <div class="row content-row">
+                <b> @Html.LabelFor(item => item.Producers):</b>
+                @Html.DisplayFor(item => item.Producers)
+            </div>
+            <div class="row content-row">
+                <b> @Html.LabelFor(item => item.Producers):</b>
+                @Html.DisplayFor(item => item.Producers)
+            </div>
+            <div class="row content-row">
+                <b> @Html.LabelFor(item => item.Actors):</b>
+                @Html.DisplayFor(item => item.Actors)
+            </div>
+            <div class="row content-row">
+                <b> @Html.LabelFor(item => item.ReleaseDate):</b>
+                @Html.DisplayFor(item => item.ReleaseDate.Year)
+            </div>
+            <div class="row content-row">
+                <b> @Html.LabelFor(item => item.Category):</b>
+                @Html.DisplayFor(item => item.Category)
+            </div>
+            <div class="row content-row">
+                <b> @Html.LabelFor(item => item.Summery):</b>
+                @Html.DisplayFor(item => item.Summery)
             </div>
         </div>
-        <div class="col-md-6">
-            <img style="width: 100%" src="data:image/png;base64,@Html.DisplayFor(item => item.Image)"/>
-        </div>
+
     </div>
     <div class="row">
 
